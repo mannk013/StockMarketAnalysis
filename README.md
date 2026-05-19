@@ -11,8 +11,38 @@ This project analyzes and predicts stock prices using 20 years of historical dat
 
 **Stocks analyzed:**
 - 🍎 Apple Inc. (AAPL) — complete analysis
-- 🪟 Microsoft (MSFT) — coming soon
+- 🪟 Microsoft Corporation (MSFT) — complete analysis
 - 🔍 Google (GOOGL) — coming soon
+
+---
+
+## 📊 Results Summary
+
+| Stock | Model | MAE | R² |
+|-------|-------|-----|----|
+| 🍎 Apple (AAPL) | Linear Regression | $2.31 | 0.9935 |
+| 🪟 Microsoft (MSFT) | Linear Regression | $4.24 | ~0.99 |
+
+---
+
+## 🔍 Key Findings
+
+### Apple vs Microsoft Comparison
+| Metric | Apple (AAPL) | Microsoft (MSFT) |
+|--------|-------------|-----------------|
+| Avg daily return | +0.12% | +0.08% |
+| Max single day gain | +15.33% | +18.60% |
+| Max single day loss | -17.92% | -14.74% |
+| Daily volatility | 1.79% | 1.74% |
+
+### Model Findings
+- **Linear Regression wins** across both stocks — stock prices follow a near-perfect linear pattern
+- Complex models (Random Forest, KNN, Gradient Boosting) fail badly due to extrapolation issues
+- This finding is **consistent across different companies** — confirming the pattern
+
+### Stock Insights
+- **Apple** — consistent growth since 2005, acceleration post-2020
+- **Microsoft** — flat 2005-2015 under Ballmer, explosive growth post-2015 under Nadella's cloud strategy
 
 ---
 
@@ -23,36 +53,24 @@ This project analyzes and predicts stock prices using 20 years of historical dat
 - No manual data collection needed — fully automated
 
 ### 🧹 S — Scrub
-- 0 missing values — clean dataset
-- Feature engineering: Daily Returns, Moving Averages, Volatility
+- 0 missing values — clean datasets
+- Feature engineering: Daily Returns, Moving Averages (50/200-day), Volatility
 
 ### 🔍 E — Explore
-- Long-term upward trend confirmed
+- Long-term upward trends confirmed for both stocks
 - Highest trading volume during **2008 financial crisis**
-- Average daily return: **+0.12%**
-- Max single day gain: **+15.33%** | Max loss: **-17.92%**
+- Moving averages reveal Golden Cross and Death Cross patterns
 
 ### 🤖 M — Model
-Trained and compared 4 ML models:
-
-| Model | MAE | R² |
-|-------|-----|----|
-| **Linear Regression** | **$2.31** | **0.9935** |
-| Random Forest | $36.67 | -0.50 |
-| Gradient Boosting | $38.73 | -0.63 |
-| KNN | $109.32 | -7.23 |
+Trained and compared 4 ML models per stock:
+- Linear Regression ✅
+- Random Forest ❌
+- Gradient Boosting ❌
+- KNN ❌
 
 ### 📊 N — Interpret
-- **Linear Regression wins** — stock prices follow near-perfect linear pattern
-- Complex models overfit to noise rather than learning the trend
-- Apple is one of the most predictable and consistently growing assets
-
----
-
-## 💡 Key Findings
-- Apple stock grew consistently over 20 years with cyclical dips
+- Linear Regression is optimal for next-day stock price prediction
 - Tomorrow's price ≈ today's price — simple models outperform complex ones
-- Highest volatility during **2008 crisis** and **COVID-2020**
 
 ---
 
@@ -68,20 +86,3 @@ Trained and compared 4 ML models:
 ## 🚀 How to Run
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/stock_analysis
-cd stock_analysis
-pip install pandas numpy matplotlib seaborn scikit-learn yfinance
-jupyter notebook
-```
-
----
-
-## 📁 Project Structure
-```
-stock_analysis/
-│
-├── apple_analysis.ipynb      ← Complete analysis
-├── microsoft_analysis.ipynb  ← Coming soon
-├── google_analysis.ipynb     ← Coming soon
-└── README.md
-```
